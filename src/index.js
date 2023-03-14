@@ -1,4 +1,4 @@
-import {validateIp, addTileLayer, getAddress} from './helpers';
+import {validateIp, addTileLayer, getAddress, addOffset} from './helpers';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import  icon  from '../images/icon-location.svg';
@@ -43,7 +43,7 @@ function handleKey(e) {
 
 function setInfo(mapData) {
 	const {lat, lng, country, region, timezone} = mapData.location;
-	console.log(mapData)
+
 	ipInfo.innerText = mapData.ip;
 	locationInfo.innerText = country + " " + region;
 	timezoneInfo.innerText = timezone;
@@ -51,4 +51,12 @@ function setInfo(mapData) {
 
 	map.setView([lat, lng])
 	L.marker([lat, lng], {icon: markerIcon}).addTo(map);
+
+	if(matchMedia("(max-width: 1023px)").matches) {
+		addOffset(map);
+	}
+	
 }
+document.addEventListener('DOMContentLoaded', () => {
+	getAddress('20.29.11.11').then(setInfo);
+})
