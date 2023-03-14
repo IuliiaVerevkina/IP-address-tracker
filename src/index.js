@@ -1,4 +1,4 @@
-import {validateIp, addTileLayer} from './helpers';
+import {validateIp, addTileLayer, getAddress} from './helpers';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import  icon  from '../images/icon-location.svg';
@@ -31,11 +31,7 @@ ipInput.addEventListener("keydown", handleKey);
 
 function getDate() {
 	if(validateIp(ipInput.value)) {
-		fetch(
-    `https://geo.ipify.org/api/v2/country?apiKey=at_8IBSV5VS8Qs8ww1Qbjs1WSgWyVbAL&ipAddress=${ipInput.value}`
-  )
-    .then((response) => response.json())
-    .then(data => setInfo(data));
+		getAddress(ipInput.value).then(setInfo);
 	}
 }
 
@@ -46,9 +42,13 @@ function handleKey(e) {
 }
 
 function setInfo(mapData) {
+	const {lat, lng, country, region, timezone} = mapData.location;
 	console.log(mapData)
 	ipInfo.innerText = mapData.ip;
-	locationInfo.innerText = mapData.location.country + " " + mapData.location.region;
-	timezoneInfo.innerText = mapData.location.timezone;
+	locationInfo.innerText = country + " " + region;
+	timezoneInfo.innerText = timezone;
 	ispInfo.innerText = mapData.isp;
+
+	map.setView([lat, lng])
+	L.marker([lat, lng], {icon: markerIcon}).addTo(map);
 }
