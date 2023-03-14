@@ -79,7 +79,6 @@
   flex-direction: column;
   position: absolute;
   left: 1.5rem;
-  z-index: 10000;
 }
 @media (min-width: 1024px) {
   .info {
