@@ -7,10 +7,9 @@
 This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0).
 Thanks for checking out this front-end coding challenge.
 
-
 ## The challenge
 
-Your challenge is to build out this IP Address Tracker app and get it looking as close to the design as possible. To get the IP Address locations, you'll be using the [IP Geolocation API by IPify](https://geo.ipify.org/). To generate the map, we recommend using [LeafletJS](https://leafletjs.com/).
+My task was to create this IP tracker app and keep it as close to design as possible. To get the locations of the IP addresses, I used the  [IP Geolocation API by IPify](https://geo.ipify.org/) . I used [LeafletJS](https://leafletjs.com/) to create the map.
 
 Users should be able to:
 
@@ -28,4 +27,4 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- JavaScript 
+- JavaScript
